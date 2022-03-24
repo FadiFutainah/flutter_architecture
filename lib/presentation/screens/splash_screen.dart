@@ -1,7 +1,6 @@
 import 'package:app/data/services/local_storage.dart';
 import 'package:app/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:get/route_manager.dart';
 
 import 'login_screen.dart';
 
@@ -18,12 +17,12 @@ class SplashScreen extends StatelessWidget {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               if (snapshot.data == '') {
-                Get.off(() => const LoginScreen());
+                return const LoginScreen();
               } else {
-                Get.off(() => const HomeScreen());
+                return const HomeScreen();
               }
             }
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           },
         ),
       ),

@@ -18,7 +18,6 @@ class RestApiService extends DataBaseService {
           .post(
             uri,
             body: body,
-            headers: defaultHeaders,
           )
           .timeout(Duration(seconds: timeoutDuration));
       return returnResponse(response);

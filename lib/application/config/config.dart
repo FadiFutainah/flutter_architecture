@@ -12,4 +12,5 @@ class StatusCode {
 class Message {
   static const String loginError = 'login failed';
   static const String loginSuccess = 'login success';
+  static const String logoutSuccess = 'login success';
 }

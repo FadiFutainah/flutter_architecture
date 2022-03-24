@@ -21,8 +21,12 @@ class PasswordFormField extends StatelessWidget {
         obscureText: formController.visable.value,
         decoration: InputDecoration(
           labelText: 'password',
-          errorText: formController.password.value,
-          suffixIcon: _getIcon(formController.visable.value),
+          errorText: formController.passwordErrorText.value,
+          errorMaxLines: 2,
+          suffixIcon: IconButton(
+            onPressed: formController.togglePasswordButton,
+            icon: _getIcon(formController.visable.value),
+          ),
         ),
       ),
     );

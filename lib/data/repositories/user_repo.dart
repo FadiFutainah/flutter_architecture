@@ -14,15 +14,19 @@ class UserRepository {
         Endpoints.login,
         UserLogin.loginBody(userModel),
       );
-      UserDto userDto = UserDto.fromMap(response);
-      if (userDto.status == true) {
+      if (response['status'] == true) {
+        UserDto userDto = UserDto.fromMap(response);
         await LocalStorage().setToken(userDto.accessToken);
         return Message.loginSuccess;
       } else {
-        return userDto.message;
+        return response['message'];
       }
     } on Exception catch (e) {
       return e.toString();
     }
+  }
+
+  Future<void> logout() async {
+    await LocalStorage().deleteToken();
   }
 }

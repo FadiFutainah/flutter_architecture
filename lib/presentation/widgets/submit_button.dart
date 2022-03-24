@@ -8,11 +8,9 @@ class SumbitButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FormController formController = Get.put(FormController());
-    return Obx(
-      () => ElevatedButton(
-        child: const Text('submit'),
-        onPressed: formController.submitFunc,
-      ),
+    return ElevatedButton(
+      child: const Text('submit'),
+      onPressed: formController.submitFunction,
     );
   }
 }

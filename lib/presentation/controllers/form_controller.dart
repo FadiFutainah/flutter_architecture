@@ -1,16 +1,16 @@
-import 'package:app/presentation/controllers/user_controller.dart';
-import 'package:get/get_rx/get_rx.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:app/presentation/controllers/login_controller.dart';
+import 'package:get/get.dart';
 
 class FormController extends GetxController {
-  RxBool visable = RxBool(false);
+  RxBool visable = RxBool(true);
   RxString email = RxString('');
   RxString password = RxString('');
   RxnString emailErrorText = RxnString(null);
   RxnString passwordErrorText = RxnString(null);
-  Rxn<Function()> submitFunc = Rxn<Function()>(null);
+  RxBool validEmail = RxBool(false);
+  RxBool validPassword = RxBool(false);
 
-  final _passwordRegex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+  // final _passwordRegex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
 
   final _emailRegex = RegExp(
     r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
@@ -29,7 +29,7 @@ class FormController extends GetxController {
   void validateEmail(String value) {
     emailErrorText.value = null;
     if (_emailRegex.hasMatch(value)) {
-      validateForm();
+      validEmail.value = true;
     } else {
       emailErrorText.value = 'A complete, valid email e.g. joe@gmail.com';
     }
@@ -37,18 +37,10 @@ class FormController extends GetxController {
 
   void validatePassword(String value) {
     passwordErrorText.value = null;
-    if (_passwordRegex.hasMatch(value)) {
-      validateForm();
+    if (password.value.length >= 8) {
+      validPassword.value = true;
     } else {
-      passwordErrorText.value =
-          'Password must be at least 8 characters and contain at least one letter and number';
-    }
-  }
-
-  void validateForm() {
-    submitFunc.value = null;
-    if (emailErrorText.value == null && passwordErrorText.value == null) {
-      submitFunc.value = submitFunction;
+      passwordErrorText.value = 'Password must be at least 8 characters';
     }
   }
 
@@ -57,9 +49,11 @@ class FormController extends GetxController {
     update();
   }
 
-  Future<void> Function() submitFunction() {
-    return () async {
+  void submitFunction() {
+    validateEmail(email.value);
+    validatePassword(password.value);
+    if (validEmail.value && validPassword.value) {
       UserController().login(email.value, password.value);
-    };
+    }
   }
 }
