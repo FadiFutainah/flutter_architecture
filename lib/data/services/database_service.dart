@@ -2,8 +2,7 @@ abstract class DataBaseService {
   final String serverAddress = 'https://srv.wassuna.com/';
 
   final Map<String, String> defaultHeaders = {
-    'Content-Type': 'application/json; charset=UTF-8',
-    'Accept': 'application/json',
+    'app-type': '0',
   };
 
   dynamic postRequest(String url, Map<String, dynamic> body);

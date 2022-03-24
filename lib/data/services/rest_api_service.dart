@@ -8,7 +8,7 @@ import 'package:app/data/services/database_service.dart';
 import 'package:app/application/config/errors/exceptions.dart';
 
 class RestApiService extends DataBaseService {
-  final int timeoutDuration = 30;
+  final int timeoutDuration = 10;
 
   @override
   Future<dynamic> postRequest(String url, Map<String, dynamic> body) async {
@@ -18,6 +18,7 @@ class RestApiService extends DataBaseService {
           .post(
             uri,
             body: body,
+            headers: defaultHeaders,
           )
           .timeout(Duration(seconds: timeoutDuration));
       return returnResponse(response);

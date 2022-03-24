@@ -1,4 +1,4 @@
-import 'package:app/presentation/controllers/login_controller.dart';
+import 'package:app/presentation/controllers/user_controller.dart';
 import 'package:get/get.dart';
 
 class FormController extends GetxController {
@@ -10,10 +10,10 @@ class FormController extends GetxController {
   RxBool validEmail = RxBool(false);
   RxBool validPassword = RxBool(false);
 
-  // final _passwordRegex = RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+  final _passwordRegex = RegExp(r'^.{8,}$');
 
   final _emailRegex = RegExp(
-    r'^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$',
+    r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
   );
 
   void emailChanged(String value) {
@@ -37,7 +37,7 @@ class FormController extends GetxController {
 
   void validatePassword(String value) {
     passwordErrorText.value = null;
-    if (password.value.length >= 8) {
+    if (_passwordRegex.hasMatch(value)) {
       validPassword.value = true;
     } else {
       passwordErrorText.value = 'Password must be at least 8 characters';

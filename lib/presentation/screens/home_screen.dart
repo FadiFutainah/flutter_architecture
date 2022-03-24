@@ -1,4 +1,4 @@
-import 'package:app/presentation/controllers/login_controller.dart';
+import 'package:app/presentation/controllers/user_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,9 +15,7 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.logout_outlined),
-          onPressed: () {
-            userController.logout();
-          },
+          onPressed: userController.logout,
         ),
       ),
       body: const Center(child: Text('You can Improvise')),

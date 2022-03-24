@@ -22,7 +22,9 @@ class SplashScreen extends StatelessWidget {
                 return const HomeScreen();
               }
             }
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+                child: Icon(Icons.android_outlined,
+                    size: 200, color: Color(0xff24C077)));
           },
         ),
       ),

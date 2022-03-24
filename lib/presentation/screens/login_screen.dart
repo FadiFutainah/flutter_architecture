@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
               children: const [
                 Icon(Icons.android_outlined,
                     size: 220, color: Color(0xff24C077)),
-                LoginFormField(label: 'username'),
+                LoginFormField(label: 'email'),
                 SizedBox(height: 10),
                 PasswordFormField(),
                 SizedBox(height: 30),

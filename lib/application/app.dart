@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:app/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -14,7 +15,13 @@ class Application extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      home: AnimatedSplashScreen(
+        duration: 5,
+        splash: const Icon(Icons.android_outlined,
+            size: 200, color: Color(0xff24C077)),
+        backgroundColor: Colors.white,
+        nextScreen: const SplashScreen(),
+      ),
     );
   }
 }

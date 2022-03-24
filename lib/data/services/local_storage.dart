@@ -16,8 +16,8 @@ class LocalStorage {
     return _token;
   }
 
-  Future<void> setToken(String token) async {
-    await _secureStorage.write(key: 'token', value: token);
+  Future<void> setToken(String val) async {
+    await _secureStorage.write(key: 'token', value: val);
   }
 
   Future<void> deleteToken() async {

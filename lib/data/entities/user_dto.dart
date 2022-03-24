@@ -6,7 +6,7 @@ class UserDto {
   String firstName;
   String email;
   String fcmToken;
-  String roleId;
+  int roleId;
   String accessToken;
   bool status;
   String message;
@@ -36,11 +36,11 @@ class UserDto {
 
   factory UserDto.fromMap(Map<String, dynamic> map) {
     return UserDto(
-      firstName: map['data']['firstName'] ?? '',
+      firstName: map['data']['first_name'] ?? '',
       email: map['data']['email'] ?? '',
-      fcmToken: map['data']['fcmToken'] ?? '',
-      roleId: map['data']['roleId'] ?? '',
-      accessToken: map['data']['accessToken'] ?? '',
+      fcmToken: map['data']['fcm_token'] ?? '',
+      roleId: map['data']['role_id'] ?? '',
+      accessToken: map['data']['access_token'] ?? '',
       status: map['status'] ?? false,
       message: map['message'] ?? '',
     );
