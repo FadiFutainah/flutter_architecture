@@ -1,7 +1,7 @@
 abstract class DataBaseService {
   final String serverAddress = 'https://srv.wassuna.com/';
 
-  final Map<String, String> defaultHeaders = {
+  static const Map<String, String> defaultHeaders = {
     'app-type': '0',
   };
 

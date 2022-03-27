@@ -44,6 +44,8 @@ class FormController extends GetxController {
     }
   }
 
+  bool validateForm() => (validEmail.value && validPassword.value);
+
   void togglePasswordButton() {
     visable.value = !visable.value;
     update();
@@ -52,7 +54,7 @@ class FormController extends GetxController {
   void submitFunction() {
     validateEmail(email.value);
     validatePassword(password.value);
-    if (validEmail.value && validPassword.value) {
+    if (validateForm()) {
       UserController().login(email.value, password.value);
     }
   }

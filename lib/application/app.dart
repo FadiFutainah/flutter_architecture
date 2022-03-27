@@ -16,7 +16,7 @@ class Application extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: AnimatedSplashScreen(
-        duration: 5,
+        duration: 1,
         splash: const Icon(Icons.android_outlined,
             size: 200, color: Color(0xff24C077)),
         backgroundColor: Colors.white,

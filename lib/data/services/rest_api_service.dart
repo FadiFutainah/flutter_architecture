@@ -11,14 +11,18 @@ class RestApiService extends DataBaseService {
   final int timeoutDuration = 10;
 
   @override
-  Future<dynamic> postRequest(String url, Map<String, dynamic> body) async {
+  Future<dynamic> postRequest(
+    String url,
+    Map<String, dynamic> body, [
+    Map<String, String> headers = DataBaseService.defaultHeaders,
+  ]) async {
     try {
       var uri = Uri.parse(serverAddress + url);
       var response = await http
           .post(
             uri,
             body: body,
-            headers: defaultHeaders,
+            headers: headers,
           )
           .timeout(Duration(seconds: timeoutDuration));
       return returnResponse(response);
